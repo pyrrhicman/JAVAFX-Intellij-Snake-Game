@@ -15,7 +15,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("gamingScreen.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.initStyle(StageStyle.UNDECORATED);
-        Scene scene = new Scene(root, 1000, 1000);
+        Scene scene = new Scene(root, 1100, 1100);
         scene.getStylesheets().add("/gamepack/gamestyle.css");
         //primaryStage.initModality(Modality.APPLICATION_MODAL);
         //primaryStage.setResizable(true);
