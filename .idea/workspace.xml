@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gamepack/GamingClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamepack/GamingClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gamepack/gamingScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamepack/gamingScreen.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -60,7 +61,7 @@
     <session id="-1600345181">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="2" />
@@ -72,13 +73,13 @@
         <counts>
           <entry key="css" value="90" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="3822" />
+          <entry key="java" value="3930" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="90" />
-          <entry key="JAVA" value="3822" />
+          <entry key="JAVA" value="3930" />
           <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
@@ -108,8 +109,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gamepack/GamingClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1724">
-              <caret line="232" column="28" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="28" />
+            <state relative-caret-position="454">
+              <caret line="230" column="16" selection-start-line="230" selection-start-column="16" selection-end-line="230" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -233,7 +234,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538450044775" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538454201105" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/jfoenix-9.0.6.jar!/" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -346,12 +347,12 @@
       <workItem from="1538415783557" duration="2086000" />
       <workItem from="1538417905383" duration="3463000" />
       <workItem from="1538445369403" duration="54000" />
-      <workItem from="1538447047887" duration="3674000" />
+      <workItem from="1538447047887" duration="4850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28863000" />
+    <option name="totallyTimeSpent" value="30039000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="20" y="2" width="1267" height="1416" extended-state="0" />
@@ -368,7 +369,7 @@
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="4" visible="true" weight="0.35714287" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.35714287" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -496,8 +497,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gamepack/GamingClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1724">
-          <caret line="232" column="28" selection-start-line="232" selection-start-column="17" selection-end-line="232" selection-end-column="28" />
+        <state relative-caret-position="454">
+          <caret line="230" column="16" selection-start-line="230" selection-start-column="16" selection-end-line="230" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

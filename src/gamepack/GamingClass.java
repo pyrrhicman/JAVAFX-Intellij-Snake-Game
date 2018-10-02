@@ -1,6 +1,7 @@
 package gamepack;
 
 import com.jfoenix.controls.JFXButton;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
@@ -8,8 +9,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -82,20 +85,7 @@ public class GamingClass implements Initializable {
         for (int counter = 0; counter < TOTALCUBE; counter++) {
         arrayList.add(new PictureClass());
         }
-        int countIT = 0;
-            for (int counterY = 0; counterY < TOTALY; counterY++) {
-                for (int counterX = 0; counterX < TOTALX; counterX++) {
-                    gridPane.add(arrayList.get(countIT).getImage(), counterX, counterY);
-
-                    arrayList.get(countIT).getImage().setOpacity(0);
-                    countIT++;
-                    if (countIT >= TOTALCUBE) {
-                        countIT = 0;
-                    }
-                }
-            }
-
-
+        resetALL();
         KeyHandling();
         Gaming();
         timer.start();
@@ -106,6 +96,7 @@ public class GamingClass implements Initializable {
             readedCode = event.getCode();
             if (readedCode != currentKeyCode & readedCode != giveMeReverse(currentKeyCode) &moved) {
                 currentKeyCode = readedCode;
+                moved = false;
                 System.out.println("entered: " + currentKeyCode);
             }
 
@@ -221,9 +212,22 @@ public class GamingClass implements Initializable {
 
 
             try {
+                /*FadeTransition ftnewChild = new FadeTransition(Duration.millis(1000), arrayList.get(newChild).getImage());
+                ftnewChild.setFromValue(0);
+                ftnewChild.setToValue(1);
+                ftnewChild.setCycleCount(0);
+                ftnewChild.setAutoReverse(true);
 
+                ftnewChild.play();*/
 
                 arrayList.get(newChild).getImage().setOpacity(1);
+                /*FadeTransition ftoldChild = new FadeTransition(Duration.millis(10), arrayList.get(oldChild).getImage());
+                ftoldChild.setFromValue(0.2);
+                ftoldChild.setToValue(0);
+                ftoldChild.setCycleCount(0);
+                ftoldChild.setAutoReverse(true);
+
+                ftoldChild.play();*/
                 arrayList.get(oldChild).getImage().setOpacity(0);
                 moved = true;
             } catch (IndexOutOfBoundsException asd) {
@@ -300,7 +304,20 @@ public class GamingClass implements Initializable {
     }
 
 
+    public void resetALL() {
+        int countIT = 0;
+        for (int counterY = 0; counterY < TOTALY; counterY++) {
+            for (int counterX = 0; counterX < TOTALX; counterX++) {
+                gridPane.add(arrayList.get(countIT).getImage(), counterX, counterY);
 
+                arrayList.get(countIT).getImage().setOpacity(0);
+                countIT++;
+                if (countIT >= TOTALCUBE) {
+                    countIT = 0;
+                }
+            }
+        }
+    }
     public void starting () {
         start.setDisable(true);
         quit.setDisable(true);
