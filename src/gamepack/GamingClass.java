@@ -230,6 +230,7 @@ public class GamingClass implements Initializable {
                 ftoldChild.play();*/
                 arrayList.get(oldChild).getImage().setOpacity(0);
                 moved = true;
+
             } catch (IndexOutOfBoundsException asd) {
                 asd.printStackTrace();
                 newChild = 21;
