@@ -25,7 +25,7 @@ import static javafx.scene.input.KeyCode.*;
 public class GamingClass implements Initializable {
     private final int TOTALX = 22;
     private final int TOTALY = 22;
-    private final int TOTALCUBE = TOTALX*TOTALY;
+    private final int TOTALCUBE = TOTALX * TOTALY;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -42,28 +42,30 @@ public class GamingClass implements Initializable {
     private Pane showpane;
     private double xOffset = 0;
     private double yOffset = 0;
-    private int snakeLength = 4;
+    private int snakeLength = 3;
     private Timer timer;
     private int delay = 100;
     private KeyCode currentKeyCode = RIGHT;
     private KeyCode lastKeyCode;
     private KeyCode readedCode;
 
+    private ArrayList<Integer> snakeBody = new ArrayList<Integer>();
 
-    private int newChild = 1;
-    private int oldChild = 0;
 
-    private boolean leftGoing = false;
+    private int newChild = 28;
+    private int oldChild = 24;
+
+    /*private boolean leftGoing = false;
     private boolean rightGoing = false;
     private boolean upGoing = false;
-    private boolean downGoing = false;
+    private boolean downGoing = false;*/
     private ArrayList<PictureClass> arrayList = new ArrayList<>();
     private boolean moved = false;
 
-    private int[] forbiddenBlocksUP = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20};
-    private int[] forbiddenBlocksDOWN = {482,481,480,479,478,477,476,475,474,473,472,471,470,469,468,467,466,465,464,463};
-    private int[] forbiddenBlocksLEFT = {22,44,66,88,110,132,154,176,198,220,242,264,286,308,330,352,374,396,418,440};
-    private int[] forbiddenBlocksRIGHT= {43,65,87,109,131,153,175,197,219,241,263,285,305,329,351,373,395,417,439,461};
+    private int[] forbiddenBlocksUP = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    private int[] forbiddenBlocksDOWN = {482, 481, 480, 479, 478, 477, 476, 475, 474, 473, 472, 471, 470, 469, 468, 467, 466, 465, 464, 463};
+    private int[] forbiddenBlocksLEFT = {22, 44, 66, 88, 110, 132, 154, 176, 198, 220, 242, 264, 286, 308, 330, 352, 374, 396, 418, 440};
+    private int[] forbiddenBlocksRIGHT = {43, 65, 87, 109, 131, 153, 175, 197, 219, 241, 263, 285, 305, 329, 351, 373, 395, 417, 439, 461};
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -78,13 +80,18 @@ public class GamingClass implements Initializable {
         });
         anchorPane.setOnMouseReleased(event -> {
             anchorPane.getScene().getWindow().setOpacity(1);
-           // vBox.getChildren().add(snakeHead);
+            // vBox.getChildren().add(snakeHead);
         });
 
 
         for (int counter = 0; counter < TOTALCUBE; counter++) {
-        arrayList.add(new PictureClass());
+            arrayList.add(new PictureClass());
         }
+        //snakeBody.add(0);
+        snakeBody.add(27);
+        snakeBody.add(26);
+        snakeBody.add(25);
+
         resetALL();
         KeyHandling();
         Gaming();
@@ -92,20 +99,28 @@ public class GamingClass implements Initializable {
     }
 
     public void KeyHandling() {
-        anchorPane.setOnKeyPressed(event ->{
+        anchorPane.setOnKeyPressed(event -> {
             readedCode = event.getCode();
-            if (readedCode != currentKeyCode & readedCode != giveMeReverse(currentKeyCode) &moved) {
-                currentKeyCode = readedCode;
-                moved = false;
-                System.out.println("entered: " + currentKeyCode);
+            if (readedCode == SPACE) {
+                snakeLength++;
+                System.out.println("snakeLength: " + snakeLength);
+
+            }
+            if (readedCode == UP | readedCode == DOWN |readedCode == LEFT |readedCode == RIGHT){
+                if (readedCode != currentKeyCode & readedCode != giveMeReverse(currentKeyCode) & moved) {
+                    currentKeyCode = readedCode;
+                    moved = false;
+                   // System.out.println("entered: " + currentKeyCode);
+                }
             }
 
+            //<editor-fold desc="comments">
             /*if (moved) {
                 lastKeyCode = currentKeyCode;
                 moved = false;
             }*/
 
-                //currentKeyCode = event.getCode();
+            //currentKeyCode = event.getCode();
 
                 /*switch (currentKeyCode) {
 
@@ -173,19 +188,24 @@ public class GamingClass implements Initializable {
                         }
                         break;
                 }*/
+            //</editor-fold>
         });
     }
 
 
+    public void BodyHandling() {
+        snakeBody.add(24);
+        snakeBody.add(23);
 
 
-
+    }
 
     public void Gaming() {
 
         timer = new Timer(delay, e -> {
 
-            //System.out.println(currentKeyCode);
+
+           // System.out.println("GONE");
             //System.out.println(whereToGoHUMAN() + " <GO");
             anchorPane.setDisable(true);
 
@@ -194,7 +214,7 @@ public class GamingClass implements Initializable {
             switch (currentKeyCode) {
                 //switch (whereToGoHUMAN()) {
 
-                    case UP:
+                case UP:
                     newChild -= TOTALY;
                     break;
                 case DOWN:
@@ -209,6 +229,17 @@ public class GamingClass implements Initializable {
 
             }
             newChild = borderControl(newChild);
+            snakeBody.add(0, newChild);
+            arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
+            for (int i = snakeBody.size()-1; i > snakeLength; i--) {
+                snakeBody.remove(i);
+            }
+
+
+
+            //arrayList.get(snakeBody.get(snakeBody.size() - 1)).getImage().setOpacity(0);
+            //snakeBody.add(oldChild);
+
 
 
             try {
@@ -219,8 +250,20 @@ public class GamingClass implements Initializable {
                 ftnewChild.setAutoReverse(true);
 
                 ftnewChild.play();*/
+                /*for (int i : snakeBody) {
+                    System.out.println(i + " : "+snakeBody.get(i));
+                }*/
 
-                arrayList.get(newChild).getImage().setOpacity(1);
+
+
+                for (int j = 0; j <= snakeLength; j++) {
+                    arrayList.get(snakeBody.get(0)).getImage().setOpacity(1);
+
+
+                }
+                //arrayList.get(snakeBody.get(0)).getImage().setOpacity(1);
+
+                //arrayList.get(newChild).getImage().setOpacity(1);
                 /*FadeTransition ftoldChild = new FadeTransition(Duration.millis(10), arrayList.get(oldChild).getImage());
                 ftoldChild.setFromValue(0.2);
                 ftoldChild.setToValue(0);
@@ -228,14 +271,24 @@ public class GamingClass implements Initializable {
                 ftoldChild.setAutoReverse(true);
 
                 ftoldChild.play();*/
-                arrayList.get(oldChild).getImage().setOpacity(0);
-                moved = true;
+                //arrayList.get(oldChild).getImage().setOpacity(0);
+                /*for (int j = snakeLength; j < snakeBody.size(); j++) {
+                    arrayList.get(snakeBody.get(j)).getImage().setOpacity(0);
 
+                }*/
+
+                moved = true;
+                for (int i = 0; i < snakeBody.size(); i++) {
+                    System.out.println("i : " +i + " : "+ snakeBody.get(i)+" : " +arrayList.get(snakeBody.get(i)).getImage().getOpacity());
+
+                }
+                System.out.println("SIZE:" + snakeBody.size());
+                System.out.println(" ");
             } catch (IndexOutOfBoundsException asd) {
                 asd.printStackTrace();
                 newChild = 21;
                 oldChild = 20;
-                 lastKeyCode = DOWN;
+                lastKeyCode = DOWN;
                 currentKeyCode = RIGHT;
 
             }
@@ -247,17 +300,16 @@ public class GamingClass implements Initializable {
         });
 
 
-
     }
 
-    public KeyCode whereToGoHUMAN() {
+    /*public KeyCode whereToGoHUMAN() {
         //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
         if (upGoing) return UP;
         else if (downGoing) return DOWN;
         else if (leftGoing) return LEFT;
         else if (rightGoing) return RIGHT;
         else return RIGHT;
-    }
+    }*/
 
 
     public KeyCode giveMeReverse(KeyCode keyCode) {
@@ -270,10 +322,10 @@ public class GamingClass implements Initializable {
     }
 
     public int borderControl(int num) {
-        boolean containsUP= false;
-        boolean containsDOWN= false;
-        boolean containsLEFT= false;
-        boolean containsRIGHT= false;
+        boolean containsUP = false;
+        boolean containsDOWN = false;
+        boolean containsLEFT = false;
+        boolean containsRIGHT = false;
         switch (currentKeyCode) {
             case UP:
                 containsUP = IntStream.of(forbiddenBlocksUP).anyMatch(x -> x == num);
@@ -319,15 +371,17 @@ public class GamingClass implements Initializable {
             }
         }
     }
-    public void starting () {
+
+    public void starting() {
         start.setDisable(true);
         quit.setDisable(true);
         vBox.setOpacity(0);
 
 
     }
-    public void quiting () {
-        Stage stage =(Stage)this.start.getScene().getWindow();
+
+    public void quiting() {
+        Stage stage = (Stage) this.start.getScene().getWindow();
         stage.close();
         System.exit(0);
 
