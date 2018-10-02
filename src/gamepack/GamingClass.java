@@ -17,6 +17,8 @@ import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 import javax.swing.*;
 
+import static javafx.scene.input.KeyCode.*;
+
 public class GamingClass implements Initializable {
     private final int TOTALX = 22;
     private final int TOTALY = 22;
@@ -39,9 +41,11 @@ public class GamingClass implements Initializable {
     private double yOffset = 0;
     private int snakeLength = 4;
     private Timer timer;
-    private int delay = 500;
-    private KeyCode currentKeyCode = KeyCode.RIGHT;
+    private int delay = 100;
+    private KeyCode currentKeyCode = RIGHT;
     private KeyCode lastKeyCode;
+    private KeyCode readedCode;
+
 
     private int newChild = 1;
     private int oldChild = 0;
@@ -91,28 +95,33 @@ public class GamingClass implements Initializable {
                 }
             }
 
+
+        KeyHandling();
         Gaming();
         timer.start();
     }
 
-    public void Gaming() {
+    public void KeyHandling() {
         anchorPane.setOnKeyPressed(event ->{
-            if (moved) {
+            readedCode = event.getCode();
+            if (readedCode != currentKeyCode & readedCode != giveMeReverse(currentKeyCode) &moved) {
+                currentKeyCode = readedCode;
+                System.out.println("entered: " + currentKeyCode);
+            }
+
+            /*if (moved) {
                 lastKeyCode = currentKeyCode;
                 moved = false;
-            }
-            if (event.getCode() != lastKeyCode) {
+            }*/
 
+                //currentKeyCode = event.getCode();
 
-
-                currentKeyCode = event.getCode();
-
-                switch (currentKeyCode) {
+                /*switch (currentKeyCode) {
 
                     case UP:
                         //System.out.println("UP");
 
-                        if (lastKeyCode != KeyCode.DOWN) {
+                        if (lastKeyCode != DOWN) {
                             upGoing = true;
                             downGoing = false;
                             leftGoing = false;
@@ -130,7 +139,7 @@ public class GamingClass implements Initializable {
 
                     case DOWN:
                         //System.out.println("DOWN");
-                        if (lastKeyCode != KeyCode.UP) {
+                        if (lastKeyCode != UP) {
                             upGoing = false;
                             downGoing = true;
                             leftGoing = false;
@@ -145,7 +154,7 @@ public class GamingClass implements Initializable {
 
                     case LEFT:
                         //System.out.println("LEFT");
-                        if (lastKeyCode != KeyCode.RIGHT) {
+                        if (lastKeyCode != RIGHT) {
                             upGoing = false;
                             downGoing = false;
                             leftGoing = true;
@@ -160,7 +169,7 @@ public class GamingClass implements Initializable {
 
                     case RIGHT:
                         //System.out.println("RIGHT");
-                        if (lastKeyCode != KeyCode.LEFT) {
+                        if (lastKeyCode != LEFT) {
                             upGoing = false;
                             downGoing = false;
                             leftGoing = false;
@@ -172,22 +181,29 @@ public class GamingClass implements Initializable {
                             rightGoing = false;
                         }
                         break;
-                }
-            } else {
-
-            }
+                }*/
         });
+    }
 
+
+
+
+
+
+    public void Gaming() {
 
         timer = new Timer(delay, e -> {
+
             //System.out.println(currentKeyCode);
             //System.out.println(whereToGoHUMAN() + " <GO");
             anchorPane.setDisable(true);
 
             //lastKeyCode = currentKeyCode;
             oldChild = newChild;
-            switch (whereToGoHUMAN()) {
-                case UP:
+            switch (currentKeyCode) {
+                //switch (whereToGoHUMAN()) {
+
+                    case UP:
                     newChild -= TOTALY;
                     break;
                 case DOWN:
@@ -201,10 +217,8 @@ public class GamingClass implements Initializable {
                     break;
 
             }
-            System.out.println("before:" + newChild);
             newChild = borderControl(newChild);
-            System.out.println("after:" + newChild);
-            System.out.println("                               ");
+
 
             try {
 
@@ -216,8 +230,8 @@ public class GamingClass implements Initializable {
                 asd.printStackTrace();
                 newChild = 21;
                 oldChild = 20;
-                lastKeyCode = KeyCode.DOWN;
-                currentKeyCode = KeyCode.RIGHT;
+                 lastKeyCode = DOWN;
+                currentKeyCode = RIGHT;
 
             }
 
@@ -233,11 +247,21 @@ public class GamingClass implements Initializable {
 
     public KeyCode whereToGoHUMAN() {
         //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
-        if (upGoing) return KeyCode.UP;
-        else if (downGoing) return KeyCode.DOWN;
-        else if (leftGoing) return KeyCode.LEFT;
-        else if (rightGoing) return KeyCode.RIGHT;
-        else return KeyCode.RIGHT;
+        if (upGoing) return UP;
+        else if (downGoing) return DOWN;
+        else if (leftGoing) return LEFT;
+        else if (rightGoing) return RIGHT;
+        else return RIGHT;
+    }
+
+
+    public KeyCode giveMeReverse(KeyCode keyCode) {
+        //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
+        if (keyCode == UP) return DOWN;
+        else if (keyCode == DOWN) return UP;
+        else if (keyCode == RIGHT) return LEFT;
+        else if (keyCode == LEFT) return RIGHT;
+        return DOWN;
     }
 
     public int borderControl(int num) {
@@ -245,7 +269,7 @@ public class GamingClass implements Initializable {
         boolean containsDOWN= false;
         boolean containsLEFT= false;
         boolean containsRIGHT= false;
-        switch (whereToGoHUMAN()) {
+        switch (currentKeyCode) {
             case UP:
                 containsUP = IntStream.of(forbiddenBlocksUP).anyMatch(x -> x == num);
                 break;
@@ -261,17 +285,12 @@ public class GamingClass implements Initializable {
         }
 
         if (containsUP) {
-            System.out.println("containsUP:" + containsUP);
             return num + 440;
         } else if (containsDOWN) {
-            System.out.println("containsDOWN:" + containsDOWN);
             return num - 440;
         } else if (containsLEFT) {
-            System.out.println("containsLEFT:" + containsLEFT);
-
             return num + 20;
         } else if (containsRIGHT) {
-            System.out.println("containsRIGHT:" + containsRIGHT);
             return num - 20;
         } else {
             return num;
