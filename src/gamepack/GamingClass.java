@@ -225,9 +225,9 @@ public class GamingClass implements Initializable {
             for (int i = snakeBody.size()-1; i > snakeLength; i--) {
                 snakeBody.remove(i);
             }
-            
 
-            
+
+
 
 
 
