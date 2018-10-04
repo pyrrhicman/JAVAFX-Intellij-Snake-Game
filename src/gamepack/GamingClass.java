@@ -1,7 +1,6 @@
 package gamepack;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
@@ -9,16 +8,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
-import javax.swing.*;
 
 import static javafx.scene.input.KeyCode.*;
 
@@ -192,14 +189,6 @@ public class GamingClass implements Initializable {
         });
     }
 
-
-    public void BodyHandling() {
-        snakeBody.add(24);
-        snakeBody.add(23);
-
-
-    }
-
     public void Gaming() {
 
         timer = new Timer(delay, e -> {
@@ -230,10 +219,15 @@ public class GamingClass implements Initializable {
             }
             newChild = borderControl(newChild);
             snakeBody.add(0, newChild);
+
+
             arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
             for (int i = snakeBody.size()-1; i > snakeLength; i--) {
                 snakeBody.remove(i);
             }
+            
+
+            
 
 
 
@@ -302,16 +296,6 @@ public class GamingClass implements Initializable {
 
     }
 
-    /*public KeyCode whereToGoHUMAN() {
-        //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
-        if (upGoing) return UP;
-        else if (downGoing) return DOWN;
-        else if (leftGoing) return LEFT;
-        else if (rightGoing) return RIGHT;
-        else return RIGHT;
-    }*/
-
-
     public KeyCode giveMeReverse(KeyCode keyCode) {
         //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
         if (keyCode == UP) return DOWN;
@@ -356,7 +340,6 @@ public class GamingClass implements Initializable {
 
     }
 
-
     public void resetALL() {
         int countIT = 0;
         for (int counterY = 0; counterY < TOTALY; counterY++) {
@@ -386,4 +369,9 @@ public class GamingClass implements Initializable {
         System.exit(0);
 
     }
+
+    public void deadSnakeCheck() {
+
+    }
+
 }
