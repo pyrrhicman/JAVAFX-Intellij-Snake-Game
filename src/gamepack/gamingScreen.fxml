@@ -74,12 +74,12 @@
                   <Font size="16.0" />
                </font>
             </JFXButton>
-            <Text fx:id="text" fill="#00000082" strokeType="OUTSIDE" strokeWidth="0.0" text="OR RIGHT AWAY" textAlignment="CENTER" wrappingWidth="500.0">
+            <Text fx:id="text" fill="#00000082" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="500.0">
                <VBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
                <font>
-                  <Font size="30.0" />
+                  <Font size="62.0" />
                </font>
             </Text>
             <JFXButton fx:id="quit" alignment="CENTER" buttonType="RAISED" onAction="#quiting" prefHeight="200.0" prefWidth="500.0" text="QUIT" textAlignment="CENTER" textFill="RED">

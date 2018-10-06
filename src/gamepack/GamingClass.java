@@ -86,10 +86,23 @@ public class GamingClass implements Initializable {
         snakeBody.add(26);
         snakeBody.add(25);
 
-        resetALL();
+
+        int countIT = 0;
+
+        for (int counterY = 0; counterY < TOTALY; counterY++) {
+            for (int counterX = 0; counterX < TOTALX; counterX++) {
+                gridPane.add(arrayList.get(countIT).getImage(), counterX, counterY);
+
+                arrayList.get(countIT).getImage().setOpacity(0);
+                countIT++;
+                if (countIT >= TOTALCUBE) {
+                    countIT = 0;
+                }
+            }
+        }
         KeyHandling();
         Gaming();
-        timer.start();
+
     }
 
     public void KeyHandling() {
@@ -107,82 +120,6 @@ public class GamingClass implements Initializable {
                    // System.out.println("entered: " + currentKeyCode);
                 }
             }
-
-            //<editor-fold desc="comments">
-            /*if (moved) {
-                lastKeyCode = currentKeyCode;
-                moved = false;
-            }*/
-
-            //currentKeyCode = event.getCode();
-
-                /*switch (currentKeyCode) {
-
-                    case UP:
-                        //System.out.println("UP");
-
-                        if (lastKeyCode != DOWN) {
-                            upGoing = true;
-                            downGoing = false;
-                            leftGoing = false;
-                            rightGoing = false;
-                        }else {
-                            upGoing = false;
-                            downGoing = true;
-                            leftGoing = false;
-                            rightGoing = false;
-                        }
-                        break;
-
-
-
-
-                    case DOWN:
-                        //System.out.println("DOWN");
-                        if (lastKeyCode != UP) {
-                            upGoing = false;
-                            downGoing = true;
-                            leftGoing = false;
-                            rightGoing = false;
-                        }else {
-                            upGoing = true;
-                            downGoing = false;
-                            leftGoing = false;
-                            rightGoing = false;
-                        }
-                        break;
-
-                    case LEFT:
-                        //System.out.println("LEFT");
-                        if (lastKeyCode != RIGHT) {
-                            upGoing = false;
-                            downGoing = false;
-                            leftGoing = true;
-                            rightGoing = false;
-                        }else {
-                            upGoing = false;
-                            downGoing = false;
-                            leftGoing = false;
-                            rightGoing = true;
-                        }
-                        break;
-
-                    case RIGHT:
-                        //System.out.println("RIGHT");
-                        if (lastKeyCode != LEFT) {
-                            upGoing = false;
-                            downGoing = false;
-                            leftGoing = false;
-                            rightGoing = true;
-                        }else {
-                            upGoing = false;
-                            downGoing = false;
-                            leftGoing = true;
-                            rightGoing = false;
-                        }
-                        break;
-                }*/
-            //</editor-fold>
         });
     }
 
@@ -195,7 +132,7 @@ public class GamingClass implements Initializable {
 
                         if ((i != j) & (snakeBody.get(i).equals(snakeBody.get(j)))) {
                             System.out.println("Destroyed");
-
+                            text.setText("GAME OVER");
                             return true;
                         }
                 }
@@ -229,7 +166,7 @@ public class GamingClass implements Initializable {
             newChild = borderControl(newChild);
             snakeBody.add(0, newChild);
             if (selfDestroyCheck()) {
-
+                resetALL();
             }
             if (newChild == foodPlace) {
                 snakeLength++;
@@ -280,11 +217,11 @@ public class GamingClass implements Initializable {
 
     public void foodMaker() {
         Random random = new Random();
-        boolean containsUP = false;
-        boolean containsDOWN = false;
-        boolean containsLEFT = false;
-        boolean containsRIGHT = false;
-        boolean containsSnake = false;
+        boolean containsUP;
+        boolean containsDOWN;
+        boolean containsLEFT;
+        boolean containsRIGHT;
+        boolean containsSnake;
 
         do {
             containsDOWN = false;
@@ -320,8 +257,16 @@ public class GamingClass implements Initializable {
         else if (keyCode == RIGHT) return LEFT;
         else if (keyCode == LEFT) return RIGHT;
         return DOWN;
+
+
     }
 
+
+
+    /**
+     * @param num input number that should be checked for being on forbidden places
+     * @return a new version of input that is corrected or same original input {@code int}
+     */
     public int borderControl(int num) {
         boolean containsUP = false;
         boolean containsDOWN = false;
@@ -357,46 +302,33 @@ public class GamingClass implements Initializable {
 
     }
 
-    /*public String borderCont(int num) {
-        boolean containsUP = false;
-        boolean containsDOWN = false;
-        boolean containsLEFT = false;
-        boolean containsRIGHT = false;
-        do {
-            containsUP = IntStream.of(forbiddenBlocksUP).anyMatch(x -> x == num);
-            containsDOWN = IntStream.of(forbiddenBlocksDOWN).anyMatch(x -> x == num);
-            containsLEFT = IntStream.of(forbiddenBlocksLEFT).anyMatch(x -> x == num);
-            containsRIGHT = IntStream.of(forbiddenBlocksRIGHT).anyMatch(x -> x == num);
-        } while (!containsUP & !containsDOWN & !containsLEFT & !containsRIGHT);
-
-        if (containsUP) return "containsUP";
-        else if (containsDOWN) return "containsDOWN";
-        else if (containsLEFT) return "containsLEFT";
-        else if (containsRIGHT) return "containsRIGHT";
-        else return "null";
-
-
-    }*/
 
     public void resetALL() {
-        int countIT = 0;
-        for (int counterY = 0; counterY < TOTALY; counterY++) {
-            for (int counterX = 0; counterX < TOTALX; counterX++) {
-                gridPane.add(arrayList.get(countIT).getImage(), counterX, counterY);
+        timer.stop();
+        start.setDisable(false);
+        quit.setDisable(false);
+        vBox.setOpacity(1);
 
-                arrayList.get(countIT).getImage().setOpacity(0);
-                countIT++;
-                if (countIT >= TOTALCUBE) {
-                    countIT = 0;
-                }
-            }
+        /*/////////////////////////////////////////
+        >>>>>>>Explanation<<<<<<<
+        *//////////////////////////////////////////
+        for (int i = snakeBody.size() - 1; i > 3; i--) {
+            snakeBody.remove(i);
         }
+        snakeLength = 3;
+        for (int i = 0; i <= 483; i++) {
+            arrayList.get(i).getImage().setOpacity(0);
+
+        }
+        foodMaker();
+
     }
 
     public void starting() {
         start.setDisable(true);
         quit.setDisable(true);
         vBox.setOpacity(0);
+        timer.start();
 
 
     }
