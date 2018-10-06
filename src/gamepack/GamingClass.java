@@ -1,7 +1,6 @@
 package gamepack;
 
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.KeyCode;
@@ -9,13 +8,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
 import javax.swing.*;
@@ -23,9 +21,7 @@ import javax.swing.*;
 import static javafx.scene.input.KeyCode.*;
 
 public class GamingClass implements Initializable {
-    private final int TOTALX = 22;
-    private final int TOTALY = 22;
-    private final int TOTALCUBE = TOTALX * TOTALY;
+
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -40,32 +36,30 @@ public class GamingClass implements Initializable {
     private GridPane gridPane;
     @FXML
     private Pane showpane;
-    private double xOffset = 0;
-    private double yOffset = 0;
-    private int snakeLength = 3;
+
+    private ArrayList<Integer> snakeBody = new ArrayList<Integer>();
+    private ArrayList<PictureClass> arrayList = new ArrayList<>();
     private Timer timer;
-    private int delay = 100;
     private KeyCode currentKeyCode = RIGHT;
     private KeyCode lastKeyCode;
     private KeyCode readedCode;
-
-    private ArrayList<Integer> snakeBody = new ArrayList<Integer>();
-
-
+    private boolean moved = false;
+    private boolean foodIsEaten = true;
+    private int[] forbiddenBlocksUP = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+    private int[] forbiddenBlocksDOWN = {462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483};
+    private int[] forbiddenBlocksLEFT = {22,44,66,88,110,132,154,176,198,220,242,264,286,308,330,352,374,396,418,440};
+    private int[] forbiddenBlocksRIGHT = {43,65,87,109,131,153,175,197,219,241,263,285,307,329,351,373,395,417,439,461};
+    private final int TOTALX = 22;
+    private final int TOTALY = 22;
+    private final int TOTALCUBE = TOTALX * TOTALY;
     private int newChild = 28;
     private int oldChild = 24;
+    private int foodPlace;
+    private int snakeLength = 3;
+    private int delay = 100;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
-    /*private boolean leftGoing = false;
-    private boolean rightGoing = false;
-    private boolean upGoing = false;
-    private boolean downGoing = false;*/
-    private ArrayList<PictureClass> arrayList = new ArrayList<>();
-    private boolean moved = false;
-
-    private int[] forbiddenBlocksUP = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
-    private int[] forbiddenBlocksDOWN = {482, 481, 480, 479, 478, 477, 476, 475, 474, 473, 472, 471, 470, 469, 468, 467, 466, 465, 464, 463};
-    private int[] forbiddenBlocksLEFT = {22, 44, 66, 88, 110, 132, 154, 176, 198, 220, 242, 264, 286, 308, 330, 352, 374, 396, 418, 440};
-    private int[] forbiddenBlocksRIGHT = {43, 65, 87, 109, 131, 153, 175, 197, 219, 241, 263, 285, 305, 329, 351, 373, 395, 417, 439, 461};
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -193,27 +187,30 @@ public class GamingClass implements Initializable {
     }
 
 
-    public void BodyHandling() {
-        snakeBody.add(24);
-        snakeBody.add(23);
+    public boolean selfDestroyCheck() {
+                for (int i = 0; i < snakeBody.size(); i++) {
 
+                    for (int j = 0; j < snakeBody.size(); j++) {
+
+                        if ((i != j) & (snakeBody.get(i).equals(snakeBody.get(j)))) {
+                            System.out.println("Destroyed");
+
+                            return true;
+                        }
+                }
+                }
+
+
+        return false;
 
     }
 
     public void Gaming() {
 
         timer = new Timer(delay, e -> {
-
-
-           // System.out.println("GONE");
-            //System.out.println(whereToGoHUMAN() + " <GO");
             anchorPane.setDisable(true);
-
-            //lastKeyCode = currentKeyCode;
             oldChild = newChild;
             switch (currentKeyCode) {
-                //switch (whereToGoHUMAN()) {
-
                 case UP:
                     newChild -= TOTALY;
                     break;
@@ -226,91 +223,85 @@ public class GamingClass implements Initializable {
                 case RIGHT:
                     newChild++;
                     break;
-
             }
             newChild = borderControl(newChild);
             snakeBody.add(0, newChild);
+            if (selfDestroyCheck()) {
+
+            }
+            if (newChild == foodPlace) {
+                snakeLength++;
+                foodIsEaten = true;
+            }
+            if (foodIsEaten) {
+                foodMaker();
+                foodIsEaten = false;
+            }
             arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
             for (int i = snakeBody.size()-1; i > snakeLength; i--) {
                 snakeBody.remove(i);
             }
 
-
-
-            //arrayList.get(snakeBody.get(snakeBody.size() - 1)).getImage().setOpacity(0);
-            //snakeBody.add(oldChild);
-
-
-
             try {
-                /*FadeTransition ftnewChild = new FadeTransition(Duration.millis(1000), arrayList.get(newChild).getImage());
-                ftnewChild.setFromValue(0);
-                ftnewChild.setToValue(1);
-                ftnewChild.setCycleCount(0);
-                ftnewChild.setAutoReverse(true);
-
-                ftnewChild.play();*/
-                /*for (int i : snakeBody) {
-                    System.out.println(i + " : "+snakeBody.get(i));
-                }*/
-
-
 
                 for (int j = 0; j <= snakeLength; j++) {
                     arrayList.get(snakeBody.get(0)).getImage().setOpacity(1);
-
-
                 }
-                //arrayList.get(snakeBody.get(0)).getImage().setOpacity(1);
-
-                //arrayList.get(newChild).getImage().setOpacity(1);
-                /*FadeTransition ftoldChild = new FadeTransition(Duration.millis(10), arrayList.get(oldChild).getImage());
-                ftoldChild.setFromValue(0.2);
-                ftoldChild.setToValue(0);
-                ftoldChild.setCycleCount(0);
-                ftoldChild.setAutoReverse(true);
-
-                ftoldChild.play();*/
-                //arrayList.get(oldChild).getImage().setOpacity(0);
-                /*for (int j = snakeLength; j < snakeBody.size(); j++) {
-                    arrayList.get(snakeBody.get(j)).getImage().setOpacity(0);
-
-                }*/
 
                 moved = true;
-                for (int i = 0; i < snakeBody.size(); i++) {
+                /*for (int i = 0; i < snakeBody.size(); i++) {
                     System.out.println("i : " +i + " : "+ snakeBody.get(i)+" : " +arrayList.get(snakeBody.get(i)).getImage().getOpacity());
 
-                }
-                System.out.println("SIZE:" + snakeBody.size());
-                System.out.println(" ");
+                }*/
+                /*System.out.println("SIZE:" + snakeBody.size());
+                System.out.println(" ");*/
             } catch (IndexOutOfBoundsException asd) {
                 asd.printStackTrace();
                 newChild = 21;
                 oldChild = 20;
                 lastKeyCode = DOWN;
                 currentKeyCode = RIGHT;
-
             }
-
-
             anchorPane.setDisable(false);
-
-
         });
 
 
     }
 
-    /*public KeyCode whereToGoHUMAN() {
-        //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
-        if (upGoing) return UP;
-        else if (downGoing) return DOWN;
-        else if (leftGoing) return LEFT;
-        else if (rightGoing) return RIGHT;
-        else return RIGHT;
-    }*/
+    public void foodMaker() {
+        Random random = new Random();
+        boolean containsUP = false;
+        boolean containsDOWN = false;
+        boolean containsLEFT = false;
+        boolean containsRIGHT = false;
+        boolean containsSnake = false;
 
+        do {
+            containsDOWN = false;
+            containsUP = false;
+            containsLEFT = false;
+            containsRIGHT = false;
+            containsSnake = false;
+
+            foodPlace = random.nextInt(442);
+            int finalFoodPlace = foodPlace;
+            containsUP = IntStream.of(forbiddenBlocksUP).anyMatch(x -> x == finalFoodPlace);
+            containsDOWN = IntStream.of(forbiddenBlocksDOWN).anyMatch(x -> x == finalFoodPlace);
+            containsLEFT = IntStream.of(forbiddenBlocksLEFT).anyMatch(x -> x == finalFoodPlace);
+            containsRIGHT = IntStream.of(forbiddenBlocksRIGHT).anyMatch(x -> x == finalFoodPlace);
+            for (int i = 0; i < snakeBody.size(); i++) {
+                if (finalFoodPlace == snakeBody.get(i)) {
+                    containsSnake = true;
+                    break;
+                }
+            }
+            System.out.println("FOOD PLACE : " + foodPlace);
+
+        } while (containsUP | containsDOWN | containsLEFT | containsRIGHT | containsSnake);
+        System.out.println("FINAL FOOD PLACE : " + foodPlace);
+
+        arrayList.get(foodPlace).getImageFood().setOpacity(1);
+    }
 
     public KeyCode giveMeReverse(KeyCode keyCode) {
         //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
@@ -356,6 +347,27 @@ public class GamingClass implements Initializable {
 
     }
 
+
+    /*public String borderCont(int num) {
+        boolean containsUP = false;
+        boolean containsDOWN = false;
+        boolean containsLEFT = false;
+        boolean containsRIGHT = false;
+        do {
+            containsUP = IntStream.of(forbiddenBlocksUP).anyMatch(x -> x == num);
+            containsDOWN = IntStream.of(forbiddenBlocksDOWN).anyMatch(x -> x == num);
+            containsLEFT = IntStream.of(forbiddenBlocksLEFT).anyMatch(x -> x == num);
+            containsRIGHT = IntStream.of(forbiddenBlocksRIGHT).anyMatch(x -> x == num);
+        } while (!containsUP & !containsDOWN & !containsLEFT & !containsRIGHT);
+
+        if (containsUP) return "containsUP";
+        else if (containsDOWN) return "containsDOWN";
+        else if (containsLEFT) return "containsLEFT";
+        else if (containsRIGHT) return "containsRIGHT";
+        else return "null";
+
+
+    }*/
 
     public void resetALL() {
         int countIT = 0;

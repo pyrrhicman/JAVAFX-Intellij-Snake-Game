@@ -7,6 +7,8 @@ public class PictureClass {
     ImageView imageView = new ImageView();
     Image image = new Image("gamepack/icon1.png");
 
+    Image imagefood = new Image("gamepack/icon2.png");
+
 
 
     PictureClass() {
@@ -20,6 +22,11 @@ public class PictureClass {
 
     public void setImage(ImageView imageView) {
         this.imageView = imageView;
+    }
+
+    public ImageView getImageFood() {
+        imageView.setImage(imagefood);
+        return imageView;
     }
 
 }
