@@ -11,12 +11,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
 import java.util.stream.IntStream;
-import javax.swing.*;
 
 import static javafx.scene.input.KeyCode.*;
 
@@ -186,6 +186,7 @@ public class GamingClass implements Initializable {
         });
     }
 
+<<<<<<< HEAD
 
     public boolean selfDestroyCheck() {
                 for (int i = 0; i < snakeBody.size(); i++) {
@@ -205,6 +206,8 @@ public class GamingClass implements Initializable {
 
     }
 
+=======
+>>>>>>> 62408d426a28e9733643cd78b2f7b9fa5f3d0381
     public void Gaming() {
 
         timer = new Timer(delay, e -> {
@@ -226,6 +229,7 @@ public class GamingClass implements Initializable {
             }
             newChild = borderControl(newChild);
             snakeBody.add(0, newChild);
+<<<<<<< HEAD
             if (selfDestroyCheck()) {
 
             }
@@ -237,11 +241,28 @@ public class GamingClass implements Initializable {
                 foodMaker();
                 foodIsEaten = false;
             }
+=======
+
+
+>>>>>>> 62408d426a28e9733643cd78b2f7b9fa5f3d0381
             arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
             for (int i = snakeBody.size()-1; i > snakeLength; i--) {
                 snakeBody.remove(i);
             }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+            //arrayList.get(snakeBody.get(snakeBody.size() - 1)).getImage().setOpacity(0);
+            //snakeBody.add(oldChild);
+
+
+
+>>>>>>> 62408d426a28e9733643cd78b2f7b9fa5f3d0381
             try {
 
                 for (int j = 0; j <= snakeLength; j++) {
@@ -268,6 +289,7 @@ public class GamingClass implements Initializable {
 
     }
 
+<<<<<<< HEAD
     public void foodMaker() {
         Random random = new Random();
         boolean containsUP = false;
@@ -303,6 +325,8 @@ public class GamingClass implements Initializable {
         arrayList.get(foodPlace).getImageFood().setOpacity(1);
     }
 
+=======
+>>>>>>> 62408d426a28e9733643cd78b2f7b9fa5f3d0381
     public KeyCode giveMeReverse(KeyCode keyCode) {
         //System.out.println(upGoing + " " + downGoing +" " + leftGoing + " " +rightGoing);
         if (keyCode == UP) return DOWN;
@@ -347,6 +371,7 @@ public class GamingClass implements Initializable {
 
     }
 
+<<<<<<< HEAD
 
     /*public String borderCont(int num) {
         boolean containsUP = false;
@@ -369,6 +394,8 @@ public class GamingClass implements Initializable {
 
     }*/
 
+=======
+>>>>>>> 62408d426a28e9733643cd78b2f7b9fa5f3d0381
     public void resetALL() {
         int countIT = 0;
         for (int counterY = 0; counterY < TOTALY; counterY++) {
@@ -398,4 +425,9 @@ public class GamingClass implements Initializable {
         System.exit(0);
 
     }
+
+    public void deadSnakeCheck() {
+
+    }
+
 }
