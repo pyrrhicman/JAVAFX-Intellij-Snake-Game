@@ -7,8 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JAVAFX_Intellij_Snake_Game.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JAVAFX_Intellij_Snake_Game.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/GamingClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/gamestyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/gamestyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/gamingScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAVAFX-Intellij-Snake-Game/gamepack/gamingScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamepack/GamingClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamepack/GamingClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamepack/gamestyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamepack/gamestyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gamepack/gamingScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gamepack/gamingScreen.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -18,6 +25,14 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/JAVAFX_Intellij_Snake_Game$Main.ic" NAME="Main Coverage Results" MODIFIED="1538930725837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>gamepack.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="228" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -64,42 +79,44 @@
     <session id="-1600345181">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="2" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.12" value="2" />
+          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="90" />
+          <entry key="css" value="91" />
           <entry key="dummy" value="11" />
-          <entry key="java" value="6234" />
+          <entry key="java" value="6870" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="90" />
-          <entry key="JAVA" value="6234" />
+          <entry key="CSS" value="91" />
+          <entry key="JAVA" value="6870" />
           <entry key="PLAIN_TEXT" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="1" />
+          <entry key="css" value="2" />
           <entry key="fxml" value="1" />
           <entry key="java" value="19" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="1" />
+          <entry key="CSS" value="2" />
           <entry key="JAVA" value="19" />
           <entry key="XML" value="1" />
         </counts>
@@ -138,11 +155,31 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gamepack/GamingClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+            <state relative-caret-position="1239">
+              <caret line="304" column="27" lean-forward="true" selection-start-line="304" selection-start-column="27" selection-end-line="304" selection-end-column="27" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#initialize#0;class#GamingClass#0" />
+                <element signature="method#KeyHandling#0;class#GamingClass#0" />
+                <element signature="method#selfDestroyCheck#0;class#GamingClass#0" />
+                <element signature="method#gameTimer#0;class#GamingClass#0" />
+                <element signature="method#foodMaker#0;class#GamingClass#0" />
+                <element signature="method#giveMeReverse#0;class#GamingClass#0" />
+                <element signature="docComment;method#borderControl#0;class#GamingClass#0" />
+                <element signature="method#borderControl#0;class#GamingClass#0" />
+                <element signature="method#resetALL#0;class#GamingClass#0" />
+                <element signature="method#starting#0;class#GamingClass#0" />
+                <element signature="method#quiting#0;class#GamingClass#0" />
+                <element signature="method#winning#0;class#GamingClass#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gamepack/gamestyle.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -160,8 +197,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gamepack/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+            <state relative-caret-position="168">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -169,8 +206,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gamepack/PictureClass.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="26" column="33" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="33" />
+            <state relative-caret-position="483">
+              <caret line="26" column="20" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -205,10 +242,10 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/gamepack/sample.fxml" />
-        <option value="$PROJECT_DIR$/src/gamepack/gamestyle.css" />
         <option value="$PROJECT_DIR$/src/gamepack/PictureClass.java" />
-        <option value="$PROJECT_DIR$/src/gamepack/GamingClass.java" />
         <option value="$PROJECT_DIR$/src/gamepack/Main.java" />
+        <option value="$PROJECT_DIR$/src/gamepack/gamestyle.css" />
+        <option value="$PROJECT_DIR$/src/gamepack/GamingClass.java" />
       </list>
     </option>
   </component>
@@ -220,8 +257,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="width" value="1940" />
+    <option name="x" value="-12" />
+    <option name="width" value="2997" />
     <option name="height" value="2124" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -235,12 +272,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="JAVAFX-Intellij-Snake-Game" type="b2602c69:ProjectViewProjectNode" />
               <item name="JAVAFX-Intellij-Snake-Game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="JAVAFX-Intellij-Snake-Game" type="b2602c69:ProjectViewProjectNode" />
+              <item name="JAVAFX-Intellij-Snake-Game" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="JAVAFX-Intellij-Snake-Game" type="b2602c69:ProjectViewProjectNode" />
@@ -262,7 +305,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,7 +317,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538849421431" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538938346437" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/window.ico" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -399,28 +441,31 @@
       <workItem from="1538829593879" duration="11618000" />
       <workItem from="1538846914416" duration="614000" />
       <workItem from="1538847641946" duration="1778000" />
+      <workItem from="1538929576259" duration="7439000" />
+      <workItem from="1538938358626" duration="8000" />
+      <workItem from="1538938440449" duration="88000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50184000" />
+    <option name="totallyTimeSpent" value="57719000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1293" height="1416" extended-state="0" />
+    <frame x="-8" y="0" width="1998" height="1416" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Image Layers" order="0" />
       <window_info id="UI Designer" order="1" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.24655312" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" sideWeight="0.6703755" visible="true" weight="0.16253869" />
       <window_info id="Structure" order="5" weight="0.25" />
       <window_info id="Favorites" order="6" />
       <window_info anchor="bottom" id="Terminal" order="0" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="2" />
       <window_info anchor="bottom" id="Find" order="3" />
-      <window_info anchor="bottom" id="Run" order="4" weight="0.21349207" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.19126984" />
       <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -432,17 +477,18 @@
       <window_info anchor="bottom" id="Profiler" order="13" />
       <window_info anchor="bottom" id="Event Log" order="14" />
       <window_info anchor="bottom" id="Messages" order="15" weight="0.32886437" />
-      <window_info anchor="right" id="Palette&#9;" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="1" />
-      <window_info anchor="right" id="Google Cloud Storage" order="2" />
-      <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-      <window_info anchor="right" id="JetGradle" order="7" />
-      <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" id="Palette" order="9" />
-      <window_info anchor="right" id="Maven Projects" order="10" />
+      <window_info anchor="right" id="Coverage" order="0" side_tool="true" weight="0.32967034" />
+      <window_info anchor="right" id="Palette&#9;" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="2" />
+      <window_info anchor="right" id="Google Cloud Storage" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
+      <window_info anchor="right" id="JetGradle" order="8" />
+      <window_info anchor="right" id="Database" order="9" />
+      <window_info anchor="right" id="Palette" order="10" />
+      <window_info anchor="right" id="Maven Projects" order="11" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -480,9 +526,6 @@
           <caret line="140" column="13" selection-start-line="140" selection-start-column="13" selection-end-line="140" selection-end-column="13" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamepack/gamestyle.css">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk-10.0.2/lib/src.zip!/javafx.graphics/javafx/scene/layout/GridPane.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -523,10 +566,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="761" column="42" selection-start-line="761" selection-start-column="42" selection-end-line="761" selection-end-column="48" />
-          <folding>
-            <element signature="e#29725#29726#0" expanded="true" />
-            <element signature="e#29784#29785#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -541,10 +580,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="901">
           <caret line="385" column="15" selection-start-line="385" selection-start-column="15" selection-end-line="385" selection-end-column="15" />
-          <folding>
-            <element signature="e#3513#3514#0" expanded="true" />
-            <element signature="e#3571#3572#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -562,20 +597,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gamepack/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gamepack/PictureClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="21" selection-end-line="26" selection-end-column="33" />
+        <state relative-caret-position="483">
+          <caret line="26" column="20" selection-start-line="26" selection-start-column="11" selection-end-line="26" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gamepack/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/gamepack/gamestyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="357">
+          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -589,10 +631,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gamepack/GamingClass.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="46" column="33" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+        <state relative-caret-position="1239">
+          <caret line="304" column="27" lean-forward="true" selection-start-line="304" selection-start-column="27" selection-end-line="304" selection-end-column="27" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#GamingClass#0" />
+            <element signature="method#KeyHandling#0;class#GamingClass#0" />
+            <element signature="method#selfDestroyCheck#0;class#GamingClass#0" />
+            <element signature="method#gameTimer#0;class#GamingClass#0" />
+            <element signature="method#foodMaker#0;class#GamingClass#0" />
+            <element signature="method#giveMeReverse#0;class#GamingClass#0" />
+            <element signature="docComment;method#borderControl#0;class#GamingClass#0" />
+            <element signature="method#borderControl#0;class#GamingClass#0" />
+            <element signature="method#resetALL#0;class#GamingClass#0" />
+            <element signature="method#starting#0;class#GamingClass#0" />
+            <element signature="method#quiting#0;class#GamingClass#0" />
+            <element signature="method#winning#0;class#GamingClass#0" />
           </folding>
         </state>
       </provider>
@@ -608,7 +661,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

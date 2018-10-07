@@ -63,34 +63,36 @@
             <RowConstraints maxHeight="40.0" minHeight="40.0" percentHeight="0.0" prefHeight="40.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Pane fx:id="showpane" focusTraversable="true" maxHeight="880.0" maxWidth="880.0" minHeight="880.0" minWidth="880.0" prefHeight="880.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <VBox fx:id="vBox" alignment="CENTER" layoutX="240.0" layoutY="400.0" prefHeight="200.0" prefWidth="409.0" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="240.0" AnchorPane.rightAnchor="240.0" AnchorPane.topAnchor="400.0">
+      <Pane fx:id="showpane" focusTraversable="true" maxHeight="880.0" maxWidth="880.0" minHeight="880.0" minWidth="880.0" prefHeight="880.0" prefWidth="880.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton fx:id="start" alignment="CENTER" buttonType="RAISED" onAction="#starting" prefHeight="200.0" prefWidth="500.0" text="START" textAlignment="CENTER" textFill="#52ab50">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-            <Text fx:id="text" fill="#00000082" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="500.0">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="62.0" />
-               </font>
-            </Text>
-            <JFXButton fx:id="quit" alignment="CENTER" buttonType="RAISED" onAction="#quiting" prefHeight="200.0" prefWidth="500.0" text="QUIT" textAlignment="CENTER" textFill="RED">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </VBox>
+            <VBox fx:id="vBox" alignment="CENTER" layoutX="167.0" layoutY="293.0" prefHeight="230.0" prefWidth="539.0">
+               <children>
+                  <Text fx:id="text" fill="#00000082" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="CENTER" wrappingWidth="500.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="62.0" />
+                     </font>
+                  </Text>
+                  <JFXButton fx:id="start" alignment="CENTER" buttonType="RAISED" onAction="#starting" prefHeight="200.0" prefWidth="500.0" text="START" textAlignment="CENTER" textFill="#52ab50">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton fx:id="quit" alignment="CENTER" buttonType="RAISED" onAction="#quiting" prefHeight="200.0" prefWidth="500.0" text="QUIT" textAlignment="CENTER" textFill="RED">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </VBox>
+         </children></Pane>
    </children>
 </AnchorPane>

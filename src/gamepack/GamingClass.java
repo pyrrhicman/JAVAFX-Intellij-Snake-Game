@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
@@ -56,13 +58,15 @@ public class GamingClass implements Initializable {
     private int oldChild = 24;
     private int foodPlace;
     private int snakeLength = 3;
-    private int delay = 100;
+    private int delay = 200;
     private double xOffset = 0;
     private double yOffset = 0;
-
+    boolean permit =false;
+     int robot = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
         anchorPane.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -82,9 +86,12 @@ public class GamingClass implements Initializable {
             arrayList.add(new PictureClass());
         }
         //snakeBody.add(0);
-        snakeBody.add(27);
-        snakeBody.add(26);
-        snakeBody.add(25);
+
+            snakeBody.add(27);
+            snakeBody.add(26);
+            snakeBody.add(25);
+
+
 
 
         int countIT = 0;
@@ -100,19 +107,29 @@ public class GamingClass implements Initializable {
                 }
             }
         }
+
+        for (int i : forbiddenBlocksUP) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksDOWN) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksLEFT) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksRIGHT) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+
+
         KeyHandling();
-        Gaming();
+        gameTimer();
 
     }
 
     public void KeyHandling() {
         anchorPane.setOnKeyPressed(event -> {
             readedCode = event.getCode();
-            if (readedCode == SPACE) {
-                snakeLength++;
-                System.out.println("snakeLength: " + snakeLength);
-
-            }
             if (readedCode == UP | readedCode == DOWN |readedCode == LEFT |readedCode == RIGHT){
                 if (readedCode != currentKeyCode & readedCode != giveMeReverse(currentKeyCode) & moved) {
                     currentKeyCode = readedCode;
@@ -123,15 +140,12 @@ public class GamingClass implements Initializable {
         });
     }
 
-
-
     public boolean selfDestroyCheck() {
                 for (int i = 0; i < snakeBody.size(); i++) {
 
                     for (int j = 0; j < snakeBody.size(); j++) {
 
-                        if ((i != j) & (snakeBody.get(i).equals(snakeBody.get(j)))) {
-                            System.out.println("Destroyed");
+                        if ((i != j) & (arrayList.get(snakeBody.get(i)).getImage().getOpacity()==1)&(snakeBody.get(i).equals(snakeBody.get(j)))) {
                             text.setText("GAME OVER");
                             return true;
                         }
@@ -143,8 +157,7 @@ public class GamingClass implements Initializable {
 
     }
 
-
-    public void Gaming() {
+    public void gameTimer() {
 
         timer = new Timer(delay, e -> {
             anchorPane.setDisable(true);
@@ -165,6 +178,12 @@ public class GamingClass implements Initializable {
             }
             newChild = borderControl(newChild);
             snakeBody.add(0, newChild);
+
+            arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
+            for (int i = snakeBody.size()-1; i > snakeLength; i--) {
+                snakeBody.remove(i);
+            }
+
             if (selfDestroyCheck()) {
                 resetALL();
             }
@@ -172,16 +191,18 @@ public class GamingClass implements Initializable {
                 snakeLength++;
                 foodIsEaten = true;
             }
+            if (snakeLength >= 400) {
+                winning();
+            }
             if (foodIsEaten) {
+                //System.out.println("SIZE:" + snakeBody.size() + " length: " + snakeLength);
+                //System.out.println(" ");
                 foodMaker();
                 foodIsEaten = false;
             }
 
 
-            arrayList.get(snakeBody.get(snakeLength)).getImage().setOpacity(0);
-            for (int i = snakeBody.size()-1; i > snakeLength; i--) {
-                snakeBody.remove(i);
-            }
+
 
 
             //arrayList.get(snakeBody.get(snakeBody.size() - 1)).getImage().setOpacity(0);
@@ -196,12 +217,8 @@ public class GamingClass implements Initializable {
                 }
 
                 moved = true;
-                /*for (int i = 0; i < snakeBody.size(); i++) {
-                    System.out.println("i : " +i + " : "+ snakeBody.get(i)+" : " +arrayList.get(snakeBody.get(i)).getImage().getOpacity());
 
-                }*/
-                /*System.out.println("SIZE:" + snakeBody.size());
-                System.out.println(" ");*/
+
             } catch (IndexOutOfBoundsException asd) {
                 asd.printStackTrace();
                 newChild = 21;
@@ -210,7 +227,23 @@ public class GamingClass implements Initializable {
                 currentKeyCode = RIGHT;
             }
             anchorPane.setDisable(false);
+            if (permit) {
+
+            robot++;
+            //System.out.println("ROBOT: " + robot);
+            if (robot >= 19) {
+                currentKeyCode = DOWN;
+                if (robot >= 20) {
+                    currentKeyCode=RIGHT;
+                    robot = 0;
+
+                }
+
+            }
+            }
+
         });
+
 
 
     }
@@ -222,6 +255,7 @@ public class GamingClass implements Initializable {
         boolean containsLEFT;
         boolean containsRIGHT;
         boolean containsSnake;
+
 
         do {
             containsDOWN = false;
@@ -242,10 +276,14 @@ public class GamingClass implements Initializable {
                     break;
                 }
             }
-            System.out.println("FOOD PLACE : " + foodPlace);
+             //for (int i = 0; i < snakeBody.size(); i++) {
+            //System.out.println("i : " +i + " : "+ snakeBody.get(i)+" : " +arrayList.get(snakeBody.get(i)).getImage().getOpacity());
+
+           // }
+           // System.out.println("FOOD PLACE : " + foodPlace);
 
         } while (containsUP | containsDOWN | containsLEFT | containsRIGHT | containsSnake);
-        System.out.println("FINAL FOOD PLACE : " + foodPlace);
+        //System.out.println("FINAL FOOD PLACE : " + foodPlace);
 
         arrayList.get(foodPlace).getImageFood().setOpacity(1);
     }
@@ -260,9 +298,6 @@ public class GamingClass implements Initializable {
 
 
     }
-
-
-
     /**
      * @param num input number that should be checked for being on forbidden places
      * @return a new version of input that is corrected or same original input {@code int}
@@ -302,9 +337,10 @@ public class GamingClass implements Initializable {
 
     }
 
-
     public void resetALL() {
         timer.stop();
+         foodIsEaten = true;
+
         start.setDisable(false);
         quit.setDisable(false);
         vBox.setOpacity(1);
@@ -320,11 +356,23 @@ public class GamingClass implements Initializable {
             arrayList.get(i).getImage().setOpacity(0);
 
         }
-        foodMaker();
-
+        //foodMaker();
+        for (int i : forbiddenBlocksUP) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksDOWN) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksLEFT) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
+        for (int i : forbiddenBlocksRIGHT) {
+            arrayList.get(i).getImage().setOpacity(0.4);
+        }
     }
 
     public void starting() {
+        resetALL();
         start.setDisable(true);
         quit.setDisable(true);
         vBox.setOpacity(0);
@@ -337,6 +385,15 @@ public class GamingClass implements Initializable {
         Stage stage = (Stage) this.start.getScene().getWindow();
         stage.close();
         System.exit(0);
+
+    }
+
+    public void winning() {
+        timer.stop();
+        start.setDisable(false);
+        quit.setDisable(false);
+        vBox.setOpacity(1);
+        text.setText("YOU WON!");
 
     }
 
